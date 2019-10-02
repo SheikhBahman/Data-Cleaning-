@@ -26,8 +26,25 @@ Each row of the data in MenuItem data file provides information, price and date,
   4. Dish data file
 Each row data in Dish data file contains information about a kind of food dish with a specified ID number. The information contains: range of price, and number of times the dish appeared in the MenuItems data file and the range of date of the appearance. It contains 423397 rows of data.
 
-# Data Cleaning Using OpenRefine
+# Sample figures from the project report
 
-# SQLite: Developing the Relational Database Schema
+## Data Cleaning Using OpenRefine
+- Text facet clustering on Sponsor column using fingerprint and n-gram function
+![GitHub Logo](/IMG/OpenRefine.png)
 
-# YesWorkFlow: Creating a Work Flow of the Project
+- Using Python/Jython code to clean the data
+![GitHub Logo](/IMG/OpenRefine2.png)
+
+## SQLite: Developing the Relational Database Schema
+
+- SQLite tables
+![GitHub Logo](/IMG/SQLite1.png)
+
+- Control connection of tables
+![GitHub Logo](/IMG/SQLite2.png)
+
+## YesWorkFlow: Creating a Work Flow of the Project
+
+- Workflow to clean MenuPage Data
+
+![GitHub Logo](/IMG/YesWorkFlow.png)
