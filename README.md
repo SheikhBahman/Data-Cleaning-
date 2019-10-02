@@ -9,7 +9,9 @@ Theory and Practice of Data Cleaning Course Project
   - SQLite
   - YesWorkFlow
   - Python/Jython
-  
+
+Part of the project report:
+
 # Introduction
 In this project I used the techniques and tools I have learned for data cleaning and wrangling in the class: “CS513 Theory and practice of data cleaning” to clean a raw and messy data set. I have chosen the New York Public Library’s crowd-sourced historical menus called “What's on the Menu?” as the messy data to be cleaned. The tools I employed in this project are: OpenRefine, Python/Jython, SQLite and YesWorkFlow.
 
@@ -23,3 +25,9 @@ The data in the MenuPage file refers to each menu ID in the Menu file provides d
 Each row of the data in MenuItem data file provides information, price and date, about an item and refers to a MenuPage and a Dish in the Dish data file. It contains 1,332,726 rows of data.
   4. Dish data file
 Each row data in Dish data file contains information about a kind of food dish with a specified ID number. The information contains: range of price, and number of times the dish appeared in the MenuItems data file and the range of date of the appearance. It contains 423397 rows of data.
+
+# Data Cleaning Using OpenRefine
+
+# SQLite: Developing the Relational Database Schema
+
+# YesWorkFlow: Creating a Work Flow of the Project
