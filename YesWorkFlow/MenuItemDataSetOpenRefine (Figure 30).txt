@@ -1,0 +1,133 @@
+'''
+@begin DataCleaning-MenuItemDateSet 
+@in MenuItem.csv @uri file:/Raw-NYPL-DataSet/MenuItem.csv
+
+
+
+    @begin CreateNewProject-OpenRefine @desc Load MenuItem.csv data to OpenRefine, using column sperated by comma format 
+    @in MenuItem.csv @uri file:/Raw-NYPL-DataSet/MenuItem.csv
+    @out OpenRefine-Spreadsheet
+    @end CleanWithOpenRefine
+    
+    @begin CleaningColumnByColumn @desc Check and Clean each column SpreadSheet
+    @in  OpenRefine-Spreadsheet
+    @out id
+    @out menu_page_id
+    @out price
+    @out high_price 
+    @out dish_id 
+    @out created_at 
+    @out updated_at 
+    @out xpos
+    @out ypos
+    @end CleaningColumnByColumn
+
+    @begin ChangeColumnName @desc Change column name to be more consistent
+    @in id
+    @in menu_page_id
+    @in price
+    @in high_price 
+    @in dish_id 
+    @in created_at 
+    @in updated_at 
+    @in xpos
+    @in ypos
+    @out ID
+    @out MenuPageID
+    @out Price
+    @out HighPrice 
+    @out DishID 
+    @out Created 
+    @out Updated 
+    @out XPos
+    @out YPos
+    @end ChangeColumnName
+    
+    @begin ToNumber @desc using common transform to date
+    @in ID
+    @in MenuPageID
+    @in Price
+    @in HighPrice 
+    @in DishID 
+    @in XPos
+    @in YPos
+    @out ID'
+    @out MenuPageID'
+    @out Price'
+    @out HighPrice' 
+    @out DishID'
+    @out XPos'
+    @out YPos'
+    @end ToNumber
+
+    @begin NumericFacet @desc perform numeric facet to check the quality of data
+    @in ID'    
+    @in MenuPageID'
+    @in Price'
+    @in HighPrice' 
+    @in DishID'
+    @in XPos'
+    @in YPos'
+    @out ID_f
+    @out MenuPageID_f
+    @out Price''
+    @out HighPrice'' 
+    @out DishID''
+    @out XPos_f
+    @out YPos_f
+    @end NumericFacet
+
+
+    @begin FillNullCells @desc Find and fill null/blank cells
+    @in Price''
+    @in HighPrice'' 
+    @in DishID''
+    @param PythonCodeFillNulls
+    @out Price_f
+    @out HighPrice_f 
+    @out DishID_f
+    @end FillNullCells
+
+
+    @begin SplitColumn @desc Split date-time column to seperate date and time
+    @in Created 
+    @in Updated
+    @param PythonSplitCode
+    @out CreatedTime_f
+    @out CreatedDate_f
+    @out UpdatedTime_f 
+    @out UpdatedDate_f
+    @end FillNullCells
+   
+    
+    @begin MenuItemCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in ID_f
+    @in MenuPageID_f
+    @in Price_f
+    @in HighPrice_f 
+    @in DishID_f
+    @in CreatedTime_f
+    @in CreatedDate_f
+    @in UpdatedTime_f 
+    @in UpdatedDate_f 
+    @in XPos_f
+    @in YPos_f
+    @out MenuItemDataOpenRefineFinal 
+    @end MenuItemCleanedOpenRefine
+    
+    @begin SavingCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in  MenuItemDataOpenRefineFinal
+    @out MenuItemCSVFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.csv
+    @out MenuItemOpenRefineProjectFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.openrefine.tar
+    @out MenuItemSQLFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.sql
+    @out MenuItemTSVFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.tsv
+    @end SavingCleanedOpenRefice
+    
+    
+@out MenuItemCSVFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.csv
+@out MenuItemOpenRefineProjectFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.openrefine.tar
+@out MenuItemSQLFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.sql
+@out MenuItemTSVFile @uri file:/OpenRefine/MenuItem/MenuItem-csv-Cleaned.tsv
+   
+@end DataCleaning-MenuItemDateSet
+'''

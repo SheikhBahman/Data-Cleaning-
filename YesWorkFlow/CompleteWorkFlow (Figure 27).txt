@@ -1,0 +1,62 @@
+'''
+@begin DataCleaning-Project 
+@in Menu.csv @uri file:/Raw-NYPL-DataSet/Menu.csv
+@in Dish.csv @uri file:/Raw-NYPL-DataSet/Dish.csv
+@in MenuItem.csv @uri file:/Raw-NYPL-DataSet/MenuItem.csv
+@in MenuPage.csv @uri file:/Raw-NYPL-DataSet/MenuPage.csv
+
+
+    @begin OpenRefineDataCleaning_MenuFile @desc Load csv file in OpenRefine and  perform data cleaning
+    @param Python_FillNullCells_code
+    @in Menu.csv @uri file:/Raw-NYPL-DataSet/Menu.csv
+    @out Menu-csv-Cleaned.csv @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.csv
+    @end CleanWithOpenRefine_MenuFile
+    
+    @begin OpenRefineDataCleaning_DishFile @desc Load csv file in OpenRefine and  perform data cleaning
+    @param Python_FillNullCells_code
+    @in Dish.csv @uri file:/Raw-NYPL-DataSet/Dish.csv
+    @out Dish-csv-Cleaned.csv @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.csv
+    @end CleanWithOpenRefine_DishFile
+    
+    @begin OpenRefineDataCleaning_MenuItemFile @desc Load csv file in OpenRefine and  perform data cleaning
+    @param Python_SplitColumns_code
+    @param Python_FillNullCells_code
+    @in MenuItem.csv @uri file:/Raw-NYPL-DataSet/MenuItem.csv
+    @out MenuItem-csv-Cleaned.csv @uri file:/OpenRefine/MenuItem-/MenuItem-csv-Cleaned.csv
+    @end CleanWithOpenRefine_MenuItemFile
+    
+    @begin OpenRefineDataCleaning_MenuPageFile @desc Load csv file in OpenRefine and  perform data cleaning
+    @param Python_FillNullCells_code
+    @in MenuPage.csv @uri file:/Raw-NYPL-DataSet/MenuPage.csv
+    @out MenuPage-csv-Cleaned.csv @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.csv
+    @end CleanWithOpenRefine_MenuPageFile
+    
+    @begin SQLiteDataSchema @desc Use SQLite for Developing the Relational Database Schema and Checking Coonstrains 
+    @in Menu-csv-Cleaned.csv @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.csv
+    @out MenuSQlite @uri file:/SQLite/MenuSQLite.csv
+    @end SQLiteDataSchema
+    
+    @begin SQLiteDataSchema @desc Use SQLite for Developing the Relational Database Schema and Checking Coonstrains 
+    @in Dish-csv-Cleaned.csv @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.csv
+    @out DishSQlite @uri file:/SQLite/DishSQLite.csv
+    @end SQLiteDataSchema
+    
+    @begin SQLiteDataSchema @desc Use SQLite for Developing the Relational Database Schema and Checking Coonstrains 
+    @in MenuItem-csv-Cleaned.csv @uri file:/OpenRefine/MenuItem-/MenuItem-csv-Cleaned.csv
+    @out MenuItemSQlite @uri file:/SQLite/MenuItemSQLite.csv
+    @end SQLiteDataSchema
+    
+    @begin SQLiteDataSchema @desc Use SQLite for Developing the Relational Database Schema and Checking Coonstrains 
+    @param SQlite_Code_Load-CreateTables_CheckData
+    @param SQlite_CheckConstrains_Delete-ModifyData
+    @in MenuPage-csv-Cleaned.csv @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.csv
+    @out MenuPageSQlite @uri file:/SQLite/MenuPageSQLite.csv
+    @end SQLiteDataSchema
+    
+@out MenuSQlite @uri file:/SQLite/MenuSQLite.csv
+@out DishSQlite @uri file:/SQLite/DishSQLite.csv
+@out MenuItemSQlite @uri file:/SQLite/MenuItemSQLite.csv
+@out MenuPageSQlite @uri file:/SQLite/MenuPageSQLite.csv
+    
+@end DataCleaning-Project 
+'''

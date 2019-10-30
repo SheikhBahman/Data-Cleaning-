@@ -1,0 +1,141 @@
+'''
+@begin DataCleaning-DishDateSet 
+@in Dish.csv @uri file:/Raw-NYPL-DataSet/Dish.csv
+
+
+
+    @begin CreateNewProject-OpenRefine @desc Load Dish.csv data to OpenRefine, using column sperated by comma format 
+    @in Dish.csv @uri file:/Raw-NYPL-DataSet/Dish.csv
+    @out OpenRefine-Spreadsheet
+    @end CleanWithOpenRefine
+    
+    @begin CleaningColumnByColumn @desc Check and Clean each column SpreadSheet
+    @in  OpenRefine-Spreadsheet
+    @out id
+    @out name
+    @out description
+    @out menus_appeared
+    @out times_appeared
+    @out first_appeared
+    @out last_appeared
+    @out lowest_price
+    @out highest_price
+    @end CleaningColumnByColumn
+
+    @begin ChangeColumnName @desc Change column name to be more consistent
+    @in id
+    @in name
+    @in description
+    @in menus_appeared
+    @in times_appeared
+    @in first_appeared
+    @in last_appeared
+    @in lowest_price
+    @in highest_price
+    @out ID
+    @out Name
+    @out Description
+    @out MenusAppeared
+    @out TimesAppeared
+    @out FirstAppeared
+    @out LastAppeared
+    @out LowestPrice
+    @out HighestPrice
+    @end ChangeColumnName
+    
+    @begin ToNumber @desc using common transform to date
+    @in ID
+    @in MenusAppeared
+    @in TimesAppeared
+    @in FirstAppeared
+    @in LastAppeared
+    @in LowestPrice 
+    @in HighestPrice
+    @out ID'
+    @out MenusAppeared'
+    @out TimesAppeared'
+    @out FirstAppeared'
+    @out LastAppeared'
+    @out LowestPrice'
+    @out HighestPrice'
+    @end ToNumber
+
+    @begin NumericFacet @desc perform numeric facet to check the quality of data
+    @in ID'
+    @in MenusAppeared'
+    @in TimesAppeared'
+    @in FirstAppeared'
+    @in LastAppeared'
+    @in LowestPrice'
+    @in HighestPrice'
+    @param PythonFillNull_NegativeNumbers @desc using Python code to correct negative values/Null
+    @out ID_f
+    @out MenusAppeared_f
+    @out TimesAppeared_f
+    @out FirstAppeared_f
+    @out LastAppeared_f
+    @out LowestPrice_f
+    @out HighestPrice_f
+    @end NumericFacet
+    
+    @begin FillNullCells @desc Find and fill null/blank cells
+    @in Name
+    @in Description  
+    @param PythonCode
+    @out Name'
+    @out Description'
+    @end FillNullCells
+    
+     @begin UpperCase @desc Using common transform to uppercase
+    @in Name'
+    @out Name''
+    @end UpperCase 
+
+    @begin TrimLeadingTrailing @desc Trim leading and trailing whitespaces
+    @in Name''
+    @in Description'    
+    @out Name*
+    @out Description* 
+    @end TrimLeadingTrailing
+
+    @begin CollapseWhiteSpaces @desc collapse consecutive whitespaces
+    @in Name*
+    @in Description*    
+    @out Name**
+    @out Description_f 
+    @end  CollapseWhiteSpaces
+
+    @begin TextFacetClustring @desc Cluster and merge the similar items using key collision/fingerproint/n-gram
+    @in Name**
+    @out Name_f
+    @end  TextFacetClustring
+    
+    @begin DishCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in ID_f
+    @in Name_f
+    @in Description_f
+    @in MenusAppeared_f
+    @in TimesAppeared_f
+    @in FirstAppeared_f
+    @in LastAppeared_f
+    @in LowestPrice_f
+    @in HighestPrice_f
+    @out DishDataOpenRefineFinal 
+    @end DishCleanedOpenRefine
+    
+    @begin SavingCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in  DishDataOpenRefineFinal
+    @out DishCSVFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.csv
+    @out DishOpenRefineProjectFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.openrefine.tar
+    @out DishSQLFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.sql
+    @out DishTSVFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.tsv
+    @end SavingCleanedOpenRefice
+    
+    
+@out DishCSVFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.csv
+@out DishOpenRefineProjectFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.openrefine.tar
+@out DishSQLFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.sql
+@out DishTSVFile @uri file:/OpenRefine/Dish/Dish-csv-Cleaned.tsv
+   
+@end DataCleaning-DishDateSet
+'''

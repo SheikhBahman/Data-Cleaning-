@@ -1,0 +1,387 @@
+[
+  {
+    "op": "core/column-rename",
+    "description": "Rename column id to ID",
+    "oldColumnName": "id",
+    "newColumnName": "ID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column name to Name",
+    "oldColumnName": "name",
+    "newColumnName": "Name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column description to Description",
+    "oldColumnName": "description",
+    "newColumnName": "Description"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column menus_appeared to MenusAppeared",
+    "oldColumnName": "menus_appeared",
+    "newColumnName": "MenusAppeared"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column times_appeared to TimesAppeared",
+    "oldColumnName": "times_appeared",
+    "newColumnName": "TimesAppeared"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column first_appeared to FirstAppeared",
+    "oldColumnName": "first_appeared",
+    "newColumnName": "FirstAppeared"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column last_appeared to LastAppeared",
+    "oldColumnName": "last_appeared",
+    "newColumnName": "LastAppeared"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column lowest_price to LowestPrice",
+    "oldColumnName": "lowest_price",
+    "newColumnName": "LowestPrice"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column highest_price to HighestPrice",
+    "oldColumnName": "highest_price",
+    "newColumnName": "HighestPrice"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column ID using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "ID",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column MenusAppeared using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "MenusAppeared",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column TimesAppeared using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "TimesAppeared",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column FirstAppeared using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "FirstAppeared",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column LastAppeared using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "LastAppeared",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column LowestPrice using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "LowestPrice",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column HighestPrice using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "HighestPrice",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column TimesAppeared 2 at index 5 based on column TimesAppeared using expression jython:if value is None or not value or value < 0:\n    return 0\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "TimesAppeared 2",
+    "columnInsertIndex": 5,
+    "baseColumnName": "TimesAppeared",
+    "expression": "jython:if value is None or not value or value < 0:\n    return 0\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column TimesAppeared",
+    "columnName": "TimesAppeared"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column TimesAppeared 2 to TimesAppeared",
+    "oldColumnName": "TimesAppeared 2",
+    "newColumnName": "TimesAppeared"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column LowestPrice 2 at index 8 based on column LowestPrice using expression jython:if value is None:\n    return -1\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "LowestPrice 2",
+    "columnInsertIndex": 8,
+    "baseColumnName": "LowestPrice",
+    "expression": "jython:if value is None:\n    return -1\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column HighestPrice 2 at index 10 based on column HighestPrice using expression jython:if value is None:\n    return -1\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "HighestPrice 2",
+    "columnInsertIndex": 10,
+    "baseColumnName": "HighestPrice",
+    "expression": "jython:if value is None:\n    return -1\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column LowestPrice 3 at index 9 based on column LowestPrice 2 using expression jython:if value == -1:\n    if cells ['HighestPrice']['value'] == -1:\n         return -1\n    else:\n         return cells ['HighestPrice']['value']\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "LowestPrice 3",
+    "columnInsertIndex": 9,
+    "baseColumnName": "LowestPrice 2",
+    "expression": "jython:if value == -1:\n    if cells ['HighestPrice']['value'] == -1:\n         return -1\n    else:\n         return cells ['HighestPrice']['value']\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column LowestPrice 3",
+    "columnName": "LowestPrice 3"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column HighestPrice",
+    "columnName": "HighestPrice"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column LowestPrice",
+    "columnName": "LowestPrice"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column LowestPrice 3 at index 8 based on column LowestPrice 2 using expression jython:if value == -1:\n    if cells ['HighestPrice 2']['value'] == -1:\n         return -1\n    else:\n         return cells ['HighestPrice 2']['value']\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "selectNumeric": true,
+          "expression": "value",
+          "selectBlank": true,
+          "selectNonNumeric": true,
+          "selectError": true,
+          "name": "LowestPrice",
+          "from": 0,
+          "to": 1100,
+          "type": "range",
+          "columnName": "LowestPrice"
+        }
+      ]
+    },
+    "newColumnName": "LowestPrice 3",
+    "columnInsertIndex": 8,
+    "baseColumnName": "LowestPrice 2",
+    "expression": "jython:if value == -1:\n    if cells ['HighestPrice 2']['value'] == -1:\n         return -1\n    else:\n         return cells ['HighestPrice 2']['value']\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column HighestPrice 3 at index 10 based on column HighestPrice 2 using expression jython:if value == -1:\n    if cells ['LowestPrice 3']['value'] == -1:\n         return -1\n    else:\n         return cells ['LowestPrice 3']['value']\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "selectNumeric": true,
+          "expression": "value",
+          "selectBlank": true,
+          "selectNonNumeric": true,
+          "selectError": true,
+          "name": "LowestPrice",
+          "from": 0,
+          "to": 1100,
+          "type": "range",
+          "columnName": "LowestPrice"
+        }
+      ]
+    },
+    "newColumnName": "HighestPrice 3",
+    "columnInsertIndex": 10,
+    "baseColumnName": "HighestPrice 2",
+    "expression": "jython:if value == -1:\n    if cells ['LowestPrice 3']['value'] == -1:\n         return -1\n    else:\n         return cells ['LowestPrice 3']['value']\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column LowestPrice 2",
+    "columnName": "LowestPrice 2"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column HighestPrice 2",
+    "columnName": "HighestPrice 2"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Name 2 at index 2 based on column Name using expression jython:if value is None or not value:\n    return \"No Name\"\nelse:\n    for c in \"%@#!\\[]()?;><\":\n        value = value.replace(c, \" \")\n    if \"..\" in value:\n        value = value.replace(\"..\", \".\")\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "selectNumeric": true,
+          "expression": "value",
+          "selectBlank": true,
+          "selectNonNumeric": true,
+          "selectError": true,
+          "name": "LowestPrice",
+          "from": 0,
+          "to": 1100,
+          "type": "range",
+          "columnName": "LowestPrice"
+        }
+      ]
+    },
+    "newColumnName": "Name 2",
+    "columnInsertIndex": 2,
+    "baseColumnName": "Name",
+    "expression": "jython:if value is None or not value:\n    return \"No Name\"\nelse:\n    for c in \"%@#!\\[]()?;><\":\n        value = value.replace(c, \" \")\n    if \"..\" in value:\n        value = value.replace(\"..\", \".\")\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Name",
+    "columnName": "Name"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column Name 2 to Name",
+    "oldColumnName": "Name 2",
+    "newColumnName": "Name"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Name using expression value.toUppercase()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Name",
+    "expression": "value.toUppercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Name using expression value.trim()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Name",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Name using expression value.replace(/\\s+/,' ')",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "Name",
+    "expression": "value.replace(/\\s+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column Description 2 at index 3 based on column Description using expression jython:if value is None:\n    return \"None\"\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "Description 2",
+    "columnInsertIndex": 3,
+    "baseColumnName": "Description",
+    "expression": "jython:if value is None:\n    return \"None\"\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column Description",
+    "columnName": "Description"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column Description 2 to Description",
+    "oldColumnName": "Description 2",
+    "newColumnName": "Description"
+  }
+]

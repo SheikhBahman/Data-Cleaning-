@@ -1,0 +1,99 @@
+'''
+@begin DataCleaning-MenuPageDateSet 
+@in MenuPage.csv @uri file:/Raw-NYPL-DataSet/MenuPage.csv
+
+
+
+    @begin CreateNewProject-OpenRefine @desc Load MenuPage.csv data to OpenRefine, using column sperated by comma format 
+    @in MenuPage.csv @uri file:/Raw-NYPL-DataSet/MenuPage.csv
+    @out OpenRefine-Spreadsheet
+    @end CleanWithOpenRefine
+    
+    @begin CleaningColumnByColumn @desc Check and Clean each column SpreadSheet
+    @in  OpenRefine-Spreadsheet
+    @out id
+    @out menu_id 
+    @out page_number
+    @out image_id, 
+    @out full_height
+    @out full_width
+    @out uuid
+    @end CleaningColumnByColumn
+
+    @begin ChangeColumnName @desc Change column name to be more consistent
+    @in id
+    @in menu_id 
+    @in page_number
+    @in image_id, 
+    @in full_height
+    @in full_width
+    @in uuid
+    @out ID
+    @out MenuID 
+    @out PageNumber
+    @out ImageID 
+    @out FullHeight
+    @out FullWidth
+    @out UUID
+    @end ChangeColumnName
+    
+    @begin ToNumber @desc using common transform to date
+    @in ID
+    @in MenuID 
+    @in PageNumber
+    @in ImageID 
+    @in FullHeight
+    @in FullWidth
+    @param PythonCode
+    @out ID'
+    @out MenuID'
+    @out PageNumber'
+    @out ImageID' 
+    @out FullHeight'
+    @out FullWidth'
+    @end ToNumber
+
+    @begin NumericFacet @desc perform numeric facet to check the quality of data
+    @in ID'
+    @in MenuID'
+    @in PageNumber'
+    @in ImageID' 
+    @in FullHeight'
+    @in FullWidth'
+    @out ID_f
+    @out MenuID_f
+    @out PageNumber_f
+    @out ImageID_f 
+    @out FullHeight_f
+    @out FullWidth_f
+    @end NumericFacet
+    
+   
+    
+    @begin MenuPageCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in ID_f
+    @in MenuID_f
+    @in PageNumber_f
+    @in ImageID_f 
+    @in FullHeight_f
+    @in FullWidth_f
+    @in UUID
+    @out MenuPageDataOpenRefineFinal 
+    @end MenuPageCleanedOpenRefine
+    
+    @begin SavingCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in  MenuPageDataOpenRefineFinal
+    @out MenuPageCSVFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.csv
+    @out MenuPageOpenRefineProjectFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.openrefine.tar
+    @out MenuPageSQLFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.sql
+    @out MenuPageTSVFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.tsv
+    @end SavingCleanedOpenRefice
+    
+    
+@out MenuPageCSVFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.csv
+@out MenuPageOpenRefineProjectFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.openrefine.tar
+@out MenuPageSQLFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.sql
+@out MenuPageTSVFile @uri file:/OpenRefine/MenuPage/MenuPage-csv-Cleaned.tsv
+   
+@end DataCleaning-MenuPageDateSet
+'''

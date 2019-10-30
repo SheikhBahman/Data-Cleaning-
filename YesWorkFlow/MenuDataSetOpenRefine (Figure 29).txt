@@ -1,0 +1,281 @@
+'''
+@begin DataCleaning-MenuDateSet 
+@in Menu.csv @uri file:/Raw-NYPL-DataSet/Menu.csv
+
+
+
+    @begin CreateNewProject-OpenRefine @desc Load Menu.csv data to OpenRefine, using column sperated by comma format 
+    @in Menu.csv @uri file:/Raw-NYPL-DataSet/Menu.csv
+    @out OpenRefine-Spreadsheet
+    @end CleanWithOpenRefine
+    
+    @begin CleaningColumnByColumn @desc Check and Clean each column SpreadSheet
+    @in  OpenRefine-Spreadsheet
+    @out id
+    @out name
+    @out sponsor 
+    @out event 
+    @out venue 
+    @out place 
+    @out physical_description 
+    @out occasion 
+    @out notes 
+    @out call_number 
+    @out keywords 
+    @out language 
+    @out date 
+    @out location 
+    @out location_type 
+    @out currency 
+    @out currency_symbol 
+    @out status 
+    @out page_count 
+    @out dish_count
+    @end CleaningColumnByColumn
+    
+    @begin ChangeColumnName @desc Change column name to be more consistent
+    @in id
+    @in name
+    @in sponsor 
+    @in event 
+    @in venue 
+    @in place 
+    @in physical_description 
+    @in occasion 
+    @in notes 
+    @in call_number 
+    @in keywords 
+    @in language 
+    @in date 
+    @in location 
+    @in location_type 
+    @in currency 
+    @in currency_symbol 
+    @in status 
+    @in page_count 
+    @in dish_count
+    @out ID
+    @out Name
+    @out Sponsor 
+    @out Event 
+    @out Venue 
+    @out Place 
+    @out PhysicalDescription 
+    @out Occasion 
+    @out Notes 
+    @out CallNumber 
+    @out Keywords 
+    @out Language 
+    @out Date 
+    @out Location 
+    @out LocationType 
+    @out Currency 
+    @out CurrencySymbol 
+    @out Status 
+    @out PageCount 
+    @out DishCount
+    @end ChangeColumnName
+    
+    @begin FillNullCells @desc Find and fill null/blank cells
+    @in Name
+    @in Sponsor 
+    @in Event 
+    @in Venue 
+    @in Place 
+    @in PhysicalDescription 
+    @in Occasion
+    @in Keywords 
+    @in Language
+    @in Location
+    @in Currency 
+    @in CurrencySymbol 
+    @in LocationType 
+    @in Notes
+    @out Name'
+    @out Sponsor' 
+    @out Event' 
+    @out Venue'
+    @out Place' 
+    @out PhysicalDescription' 
+    @out Occasion'
+    @out Keywords' 
+    @out Language'
+    @out Location'
+    @out Currency 
+    @out CurrencySymbol_f 
+    @out LocationType' 
+    @out Notes'
+    @end FillNullCells' 
+    
+    @begin UpperCase @desc Using common transform to uppercase
+    @in Name'
+    @in Sponsor' 
+    @in Event' 
+    @in Venue' 
+    @in Place' 
+    @in PhysicalDescription' 
+    @in Occasion' 
+    @in Notes'
+    @in Location'
+    @in Currency
+    @in Status 
+    @out Name''
+    @out Sponsor'' 
+    @out Event'' 
+    @out Venue'' 
+    @out Place'' 
+    @out PhysicalDescription'' 
+    @out Occasion'' 
+    @out Notes_f
+    @out Location''
+    @out Currency'' 
+    @out Status'' 
+    @end UpperCase'' 
+    
+    @begin TrimLeadingTrailing @desc Trim leading and trailing whitespaces
+    
+    @in Name''
+    @in Sponsor''
+    @in Event'' 
+    @in Venue'' 
+    @in Place'' 
+    @in PhysicalDescription'' 
+    @in Occasion'' 
+    @in Keywords' 
+    @in Language' 
+    @in Location'' 
+    @in LocationType' 
+    @in Currency'' 
+    @in Status'' 
+    @in PageCount
+    @in DishCount
+    @in CallNumber
+    @out Name*
+    @out Sponsor*
+    @out Event* 
+    @out Venue* 
+    @out Place* 
+    @out PhysicalDescription*
+    @out Occasion* 
+    @out Keywords* 
+    @out Language* 
+    @out Location* 
+    @out LocationType*
+    @out Currency* 
+    @out Status* 
+    @out PageCount*
+    @out DishCount*
+    @out CallNumber_f
+    @end TrimLeadingTrailing*
+    
+    @begin CollapseWhiteSpaces @desc collapse consecutive whitespaces 
+    @in Name*
+    @in Sponsor*
+    @in Event* 
+    @in Venue* 
+    @in Place* 
+    @in PhysicalDescription* 
+    @in Occasion* 
+    @in Keywords* 
+    @in Language* 
+    @in Location* 
+    @in LocationType* 
+    @in Currency* 
+    @in Status* 
+    @out Name**
+    @out Sponsor** 
+    @out Event** 
+    @out Venue** 
+    @out Place** 
+    @out PhysicalDescription** 
+    @out Occasion** 
+    @out Keywords** 
+    @out Language** 
+    @out Location** 
+    @out LocationType** 
+    @out Currency** 
+    @out Status** 
+    @end  CollapseWhiteSpaces
+
+    @begin TextFacetClustring @desc Cluster and merge the similar items using key collision/fingerproint/n-gram
+    @in Name**
+    @in Sponsor** 
+    @in Event** 
+    @in Venue** 
+    @in Place** 
+    @in PhysicalDescription** 
+    @in Occasion** 
+    @in Keywords** 
+    @in Language** 
+    @in Location** 
+    @in LocationType** 
+    @in Currency** 
+    @in Status** 
+    @out Name_f
+    @out Sponsor_f 
+    @out Event_f 
+    @out Venue_f 
+    @out Place_f 
+    @out PhysicalDescription_f 
+    @out Occasion_f 
+    @out Keywords_f 
+    @out Language_f 
+    @out Location_f 
+    @out LocationType_f 
+    @out Currency_f 
+    @out Status_f 
+    @end  TextFacetClustring
+    
+    @begin ToDate @desc using common transform to date
+    @in Date
+    @out Date_f
+    @end  ToDate
+    
+    @begin ToNumber @desc using common transform to date
+    @in ID
+    @in PageCount*
+    @in DishCount*
+    @out ID_f
+    @out PageCount_f
+    @out DishCount_f
+    @end  ToNumber
+    
+    @begin MenuCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in ID_f
+    @in Name_f
+    @in Sponsor_f 
+    @in Event_f 
+    @in Venue_f 
+    @in Place_f 
+    @in PhysicalDescription_f 
+    @in Occasion_f 
+    @in Notes_f 
+    @in CallNumber_f 
+    @in Keywords_f 
+    @in Language_f 
+    @in Date_f 
+    @in Location_f 
+    @in LocationType_f 
+    @in Currency_f 
+    @in CurrencySymbol_f 
+    @in Status_f 
+    @in PageCount_f 
+    @in DishCount_f
+    @out MenuDataOpenRefineFinal 
+    @end MenuCleanedOpenRefine
+    
+    @begin SavingCleanedOpenRefine @desc save project as OpenRefine project, Comma-separated value, Tab-separated value and SQL exporter
+    @in  MenuDataOpenRefineFinal
+    @out MenuCSVFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.csv
+    @out MenuOpenRefineProjectFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.openrefine.tar
+    @out MenuSQLFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.sql
+    @out MenuTSVFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.tsv
+    @end SavingCleanedOpenRefice
+    
+    
+@out MenuCSVFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.csv
+@out MenuOpenRefineProjectFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.openrefine.tar
+@out MenuSQLFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.sql
+@out MenuTSVFile @uri file:/OpenRefine/Menu/Menu-csv-Cleaned.tsv
+@end DataCleaning-MenuDateSet
+'''

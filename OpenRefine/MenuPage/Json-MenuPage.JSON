@@ -1,0 +1,194 @@
+[
+  {
+    "op": "core/column-rename",
+    "description": "Rename column id to ID",
+    "oldColumnName": "id",
+    "newColumnName": "ID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column menu_id to MenuID",
+    "oldColumnName": "menu_id",
+    "newColumnName": "MenuID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column page_number to PageNumber",
+    "oldColumnName": "page_number",
+    "newColumnName": "PageNumber"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column image_id to ImageID",
+    "oldColumnName": "image_id",
+    "newColumnName": "ImageID"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column full_height to FullLength",
+    "oldColumnName": "full_height",
+    "newColumnName": "FullLength"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column full_width to FullWidth",
+    "oldColumnName": "full_width",
+    "newColumnName": "FullWidth"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column uuid to UUID",
+    "oldColumnName": "uuid",
+    "newColumnName": "UUID"
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column MenuID using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "MenuID",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column ID using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "ID",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column PageNumber using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "PageNumber",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column ImageID using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "ImageID",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column FullLength using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "FullLength",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column FullWidth using expression value.toNumber()",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "FullWidth",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column PageNumber 2 at index 3 based on column PageNumber using expression jython:if value is None or not value:\n    return 1\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "PageNumber 2",
+    "columnInsertIndex": 3,
+    "baseColumnName": "PageNumber",
+    "expression": "jython:if value is None or not value:\n    return 1\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column PageNumber",
+    "columnName": "PageNumber"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column PageNumber 2 to PageNumber",
+    "oldColumnName": "PageNumber 2",
+    "newColumnName": "PageNumber"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column FullLength 2 at index 5 based on column FullLength using expression jython:if value is None or not value:\n    return 0\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "FullLength 2",
+    "columnInsertIndex": 5,
+    "baseColumnName": "FullLength",
+    "expression": "jython:if value is None or not value:\n    return 0\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column FullLength",
+    "columnName": "FullLength"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column FullLength 2 to FullLength",
+    "oldColumnName": "FullLength 2",
+    "newColumnName": "FullLength"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column FullWidth 2 at index 6 based on column FullWidth using expression jython:if value is None or not value:\n    return 0\nelse:\n    return value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "FullWidth 2",
+    "columnInsertIndex": 6,
+    "baseColumnName": "FullWidth",
+    "expression": "jython:if value is None or not value:\n    return 0\nelse:\n    return value",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-removal",
+    "description": "Remove column FullWidth",
+    "columnName": "FullWidth"
+  },
+  {
+    "op": "core/column-rename",
+    "description": "Rename column FullWidth 2 to FullWidth",
+    "oldColumnName": "FullWidth 2",
+    "newColumnName": "FullWidth"
+  }
+]
